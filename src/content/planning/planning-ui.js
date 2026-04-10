@@ -2,11 +2,10 @@
 
 
 const user = {
-  OleHrytsa: "Oleksander Hrytsaienko",
   RKobus: "Rafał Kobus",
-  JurgowiakM: "Michał Jurgowiak",
   KaKazaniecki: "Kamil Kazaniecki",
   DmyKrapyvianskyi: "Dmytro Krapyvianskyi",
+  JaGajowiecki: "Jakub Gajowiecki",
 };
 
 const target = document.body.getAttribute("data-user");

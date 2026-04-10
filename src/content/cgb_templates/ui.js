@@ -34,12 +34,10 @@ window.ui = {
     const currentUserName = document.body.getAttribute("data-user");
 
     const user = {
-      OleHrytsa: "Oleksander Hrytsaienko",
       RKobus: "Rafał Kobus",
-      JurgowiakM: "Michał Jurgowiak",
       KaKazaniecki: "Kamil Kazaniecki",
       DmyKrapyvianskyi: "Dmytro Krapyvianskyi",
-      Orlinski: "Kamil Orliński",
+      JaGajowiecki: "Jakub Gajowiecki",
     };
 
     const splitTarget = user[currentUserName].split(" ")[0];
