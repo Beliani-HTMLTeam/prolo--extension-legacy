@@ -70,12 +70,10 @@ class Issues {
     issue_with_alarms: "",
   });
   board_id = "13";
-  users = {
-    Orlinski: "1196",
-    JurgowiakM: "1194",
+  users = { // https://www.prologistics.info/api/issueLog/getIssueTypes/?
     KaKazaniecki: "1193",
-    DmyKrapyvianskyi: "5319",
-    OleHrytsa: "1686",
+    DmyKrapyvianskyi: "1910",
+    JaGajowiecki: "1989",
     RKobus: "1204",
   };
   constructor() {
