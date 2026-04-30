@@ -12,8 +12,7 @@ function updateButtonStyle() {
     border: 2px solid ${isActive ? "green" : "red"};
     padding: 5px 10px;
     cursor: pointer;
-    border-radius: 3px;
-    margin: 5px;`;
+    border-radius: 3px;`;
 }
 
 updateButtonStyle();

@@ -102,8 +102,16 @@ function fetchAvailableIds() {
             "Shop#7875098: Jakub Gajowiecki jakub.gajowiecki@beliani.net"
         },
 
-        // "Marketing+Graphics": {
-        // },
+        "Graphics": {
+          AHrymnak:
+            "Shop#7622688: Adriana Hrymnak andriana.hrymnak@beliani.net",
+
+          AWagner:
+            "Shop#7602049: Agata Wagner agata.wagner@beliani.net",
+
+          AMyryk:
+            "Shop#5509192: Anastasiia Myryk a.myryk@beliani.net"
+        },
       };
 
       const flexContainer = document.createElement("div");

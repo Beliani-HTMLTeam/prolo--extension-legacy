@@ -17,6 +17,8 @@ async function fetchProducts(ids) {
       `https://www.prologistics.info/api/condensedSA/getSlave/?id=${slave_id}&block=buttons`,
   };
 
+  let { getProductName, getSlavesForMasterId, getPrice, getShopAliases, getPriceAndIsActive } = apiRoutes;
+
   async function parse_response(responses, cbs) {
     const responses_json = [];
 
@@ -69,8 +71,8 @@ async function fetchProducts(ids) {
     // 1.3 Get shop aliases
     const parsed_response_slaves = await parse_response(
       await Promise.allSettled([
-        fetch(apiRoutes.getProductName(product.main_id)),
-        fetch(apiRoutes.getSlavesForMasterId(product.main_id)),
+        fetch(getProductName(product.main_id)),
+        fetch(getSlavesForMasterId(product.main_id)),
       ]),
       [
         // 2.1 Array of callbacks.
@@ -93,7 +95,7 @@ async function fetchProducts(ids) {
     const slaves_prices = await parse_response_prices(
       await Promise.allSettled(
         slaves_ids.map((slave) =>
-          fetch(apiRoutes.getPriceAndIsActive(slave.id)),
+          fetch(getPriceAndIsActive(slave.id)),
         ),
       ),
     );
