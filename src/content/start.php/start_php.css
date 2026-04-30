@@ -201,7 +201,7 @@ html,
   margin: 0;
   margin-bottom: 1rem;
 }
-.missing-trans-title {
+.missing-trans-title, .missing-approvals-title {
   font-size: 10px;
   margin: 0;
 }

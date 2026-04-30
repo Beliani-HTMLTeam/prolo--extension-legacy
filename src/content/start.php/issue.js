@@ -38,7 +38,7 @@ injectStartCss();
 if (body.innerText.includes('string(21) "www.prologistics.info"')) {
   body.innerHTML = body.innerHTML.replace(
     /string\(21\)\s*"www\.prologistics\.info"/g,
-    ""
+    "",
   );
 }
 
@@ -70,7 +70,8 @@ class Issues {
     issue_with_alarms: "",
   });
   board_id = "13";
-  users = { // https://www.prologistics.info/api/issueLog/getIssueTypes/?
+  users = {
+    // https://www.prologistics.info/api/issueLog/getIssueTypes/?
     KaKazaniecki: "1193",
     DmyKrapyvianskyi: "1910",
     JaGajowiecki: "1989",
@@ -151,7 +152,7 @@ class Issues {
     let isMyIssue = false;
     if ("issue_type" in issue) {
       isMyIssue = issue.issue_type.find(
-        (item) => item.id === this.users[this.user?.username ?? this.user]
+        (item) => item.id === this.users[this.user?.username ?? this.user],
       );
     }
     return isMyIssue;
@@ -240,7 +241,7 @@ class Issues {
 
     const options = [];
     const entries = Object.entries(this.issues.issue_boards).filter(
-      (item) => item[1].inactive !== "1"
+      (item) => item[1].inactive !== "1",
     );
     for (const [board_id, { name, inactive }] of entries) {
       options.push(this.renderBoard({ id: board_id, name: name }));
@@ -267,11 +268,11 @@ class Issues {
 
   getUser = () => {
     const scriptData = [...document.body.querySelectorAll("script")].find(
-      (item) => item.textContent.includes("pushHost")
+      (item) => item.textContent.includes("pushHost"),
     );
     try {
       const user_data = JSON.parse(
-        scriptData.textContent.split(";")[3].split("=")[1]
+        scriptData.textContent.split(";")[3].split("=")[1],
       );
       return user_data;
     } catch (error) {
@@ -340,7 +341,7 @@ class Issues {
     });
     for (const column of sort_columns) {
       const column_issues = issue_list.filter(
-        (item) => item.issue_board_column === column.id
+        (item) => item.issue_board_column === column.id,
       );
       columns.push(this.createColumn(column, column_issues));
     }
@@ -362,17 +363,17 @@ class Issues {
       const json = await resp.json();
       const checklists = json?.checklists || [];
       const translationsChecklist = checklists.find(
-        (c) => c.title && c.title.toLowerCase().includes("translations")
+        (c) => c.title && c.title.toLowerCase().includes("translations"),
       );
       if (!translationsChecklist) {
         console.info(
-          "getTranslationsChecklist: no translations checklist found"
+          "getTranslationsChecklist: no translations checklist found",
         );
         return null;
       }
 
       const checkpoints = (translationsChecklist.checkpoints || []).map(
-        (cp) => ({ description: cp.description, done: cp.done === "1" })
+        (cp) => ({ description: cp.description, done: cp.done === "1" }),
       );
 
       const prev = document.getElementById("translations-checklist-panel");
@@ -433,12 +434,64 @@ class Issues {
       const json = await resp.json();
       const checklists = json?.checklists || [];
       const translationsChecklist = checklists.find(
-        (c) => c.title && c.title.toLowerCase().includes("translations")
+        (c) => c.title && c.title.toLowerCase().includes("translations"),
       );
       if (!translationsChecklist) return null;
       const checkpoints = (translationsChecklist.checkpoints || []).map(
-        (cp) => ({ description: cp.description, done: cp.done === "1" })
+        (cp) => ({ description: cp.description, done: cp.done === "1" }),
       );
+      return checkpoints;
+    } catch (e) {
+      return null;
+    }
+  };
+
+  getNewsletterChecklistData = async (issue_id) => {
+    if (!issue_id) return null;
+    try {
+      const url = `${window.location.origin}/api/issueLog/checklist/?issue_id=${issue_id}`;
+      const resp = await fetch(url, { credentials: "include" });
+      if (!resp.ok) return null;
+      const json = await resp.json();
+      const checklists = json?.checklists || [];
+      const newsletterChecklists = checklists.filter(
+        (c) =>
+          c.title &&
+          c.title.toLowerCase().includes("newsletter testing approved"),
+      );
+
+      if (newsletterChecklists.length === 0) return null;
+
+      const cleanChecklists = (checklists) => {
+        return (checklists || []).map((cp) => ({
+          description: cp.description.split(/\s+/)[0].trim(),
+          done: cp.done === "1",
+        }));
+      };
+
+      if (newsletterChecklists.length === 2) {
+        const groupACheckpoints = cleanChecklists(newsletterChecklists[0].checkpoints || []);
+        const groupBCheckpoints = cleanChecklists(newsletterChecklists[1].checkpoints || []);
+
+        const groupBMap = new Map();
+        groupBCheckpoints.forEach((cp) => {
+          groupBMap.set(cp.description, cp.done);
+        });
+
+        const mergedCheckpoints = groupACheckpoints.map((cp) => {
+          const isDoneInB = groupBMap.has(cp.description) ? groupBMap.get(cp.description) : true;
+          return {
+            description: cp.description,
+            done: cp.done && isDoneInB,
+          };
+        });
+
+        console.log("mergedCheckpoints", mergedCheckpoints);
+        return mergedCheckpoints;
+      }
+
+      const checkpoints = cleanChecklists(newsletterChecklists[0].checkpoints || []);
+      console.log("checkpoints", checkpoints)
       return checkpoints;
     } catch (e) {
       return null;
@@ -473,7 +526,7 @@ class Issues {
     const sort_issue = issue_list.toSorted(
       (a, b) =>
         Number(a.issue_board_column_ordering) -
-        Number(b.issue_board_column_ordering)
+        Number(b.issue_board_column_ordering),
     );
     for (const issue of sort_issue) {
       issueCards.push(this.createIssueCard(issue));
@@ -519,6 +572,8 @@ class Issues {
     progress.innerText = issue.checklists_progress;
     progress.style.width = issue.checklists_progress;
 
+    console.log("issue", issue);
+
     // CONTAINER BTN
     const containerBtns = document.createElement("div");
     containerBtns.className = "container-btns";
@@ -530,7 +585,7 @@ class Issues {
     commentsImg.height = 12;
     commentsImg.alt = "comments";
     commentsImg.src = chrome.runtime.getURL(
-      "content/start.php/svg/message.svg"
+      "content/start.php/svg/message.svg",
     );
     comments_btn.appendChild(commentsImg);
     comments_btn.addEventListener("click", async (ev) => {
@@ -541,7 +596,7 @@ class Issues {
       commentsImg2.height = 12;
       commentsImg2.alt = "comments";
       commentsImg2.src = chrome.runtime.getURL(
-        "content/start.php/svg/message.svg"
+        "content/start.php/svg/message.svg",
       );
       comments_btn.appendChild(commentsImg2);
       let comments = await this.loadIssue(ev, issue.id);
@@ -557,7 +612,7 @@ class Issues {
           commentsNotif.height = 12;
           commentsNotif.alt = "comments-notif";
           commentsNotif.src = chrome.runtime.getURL(
-            "content/start.php/svg/message-notif.svg"
+            "content/start.php/svg/message-notif.svg",
           );
           comments_btn.appendChild(commentsNotif);
         }
@@ -585,7 +640,7 @@ class Issues {
     spreadsheetImg.height = 12;
     spreadsheetImg.alt = "spreadsheet";
     spreadsheetImg.src = chrome.runtime.getURL(
-      "content/start.php/svg/spreadsheet.svg"
+      "content/start.php/svg/spreadsheet.svg",
     );
     spreadsheet_btn.appendChild(spreadsheetImg);
     spreadsheet_btn.href = issue["Translation spreadsheet newsletter"];
@@ -662,6 +717,13 @@ class Issues {
     const missingChipsP = document.createElement("p");
     missingChipsP.className = "missing-chips";
 
+    const missingApprovalsTitleP = document.createElement("p");
+    missingApprovalsTitleP.textContent = "Missing Approvals:";
+    missingApprovalsTitleP.className = "missing-approvals-title";
+
+    const missingApprovalsChipsP = document.createElement("p");
+    missingApprovalsChipsP.className = "missing-chips";
+
     div.append(a);
     if (
       issue.checklists_progress !== "-" &&
@@ -673,6 +735,10 @@ class Issues {
     div.append(issue_info);
     issue_info.append(missingTitleP);
     issue_info.append(missingChipsP);
+    issue_info.append(missingApprovalsTitleP);
+    issue_info.append(missingApprovalsChipsP);
+
+    // console.log("issue:", issue)
 
     (async () => {
       try {
@@ -695,6 +761,33 @@ class Issues {
           });
         } else {
           missingTitleP.textContent = "✔ Translations done!";
+          // missingChipsP.remove();
+        }
+      } catch (e) {}
+    })();
+
+    (async () => {
+      try {
+        if (!issue.__translations_checkpoints) {
+          issue.__newsletter_checkpoints =
+            await this.getNewsletterChecklistData(issue.id);
+        }
+        const cps = issue.__newsletter_checkpoints || [];
+        const missingApprovals = cps
+          .filter((cp) => !cp.done)
+          .map((cp) => cp.description.trim())
+          .filter(Boolean);
+
+        if (missingApprovals.length) {
+          missingApprovalsChipsP.innerHTML = "";
+          missingApprovals.forEach((code) => {
+            const chip = document.createElement("span");
+            chip.className = "missingCode";
+            chip.textContent = `${code}`;
+            missingApprovalsChipsP.appendChild(chip);
+          });
+        } else {
+          missingApprovalsTitleP.textContent = "✔ All newsletters approved!";
           // missingChipsP.remove();
         }
       } catch (e) {}
@@ -879,7 +972,7 @@ class Issues {
           method: "POST",
           mode: "cors",
           credentials: "include",
-        }
+        },
       );
       if (!response.ok) {
         throw new Error(response.statusText);
