@@ -30,7 +30,7 @@ class ProductListFilter {
           master_sa: savedParams.master_sa,
           username: savedParams.username,
           ShopPrice: savedParams.ShopPrice,
-          ShopHPrice: savedParams.ShopHPrice,
+          ShopHPrice: savedParams.username !== "Beliani PL" ? savedParams.ShopHPrice : null,
         },
         data: {
           id: data.id,
