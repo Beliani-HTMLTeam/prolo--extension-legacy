@@ -146,7 +146,7 @@ const TEMPLATES = [
     <style> 
         #cgb.cgbContainer{ justify-content: center; display: flex; align-items: center; width: 100%; overflow:hidden; max-height: 590px; } 
         #cgb .xyCTA{ text-decoration: underline; text-underline-position: under; text-decoration-thickness: 1px; font-weight: 400; font-size: 20px; } 
-        #cgb .xyHeader1{ font-size: 45px; line-height: 1.25; margin: 0 0 12px 0; } 
+        #cgb .xyHeader1{ font-size: 45px; line-height: 1.25; margin: 0 0 12px 0; padding-right: min(24px, 2vw); } 
         #cgb .xyHeader3{ font-size: 20px; margin: 0 0 18px 0; } 
         #cgb .textContainer1 { padding-left: min(24px, 2vw); min-width: 37%; flex: 0 1 37%; } 
         @media screen and (max-width: 1200px){ #cgb .xyHeader1{ font-size: 32px; } #cgb .xyHeader3{ font-size: 18px; } #cgb .xyCTA{ font-size: 18px; } } 
@@ -301,7 +301,7 @@ const TEMPLATES = [
     <style> 
         #cgb.cgbContainer{ justify-content: center; display: flex; align-items: center; width: 100%; overflow:hidden; max-height: 590px; } 
         #cgb .xyCTA{ text-decoration: underline; text-underline-position: under; text-decoration-thickness: 1px; font-weight: 400; font-size: 20px; } 
-        #cgb .xyHeader1{ font-size: 45px; line-height: 1.25; margin: 0 0 12px 0; } 
+        #cgb .xyHeader1{ font-size: 45px; line-height: 1.25; margin: 0 0 12px 0; padding-right: min(24px, 2vw); } 
         #cgb .xyHeader3{ font-size: 20px; margin: 0 0 18px 0; } 
         #cgb .textContainer1 { padding-left: min(24px, 2vw); min-width: 37%; flex: 0 1 37%; } 
         @media screen and (max-width: 1200px){ #cgb .xyHeader1{ font-size: 32px; } #cgb .xyHeader3{ font-size: 18px; } #cgb .xyCTA{ font-size: 18px; } } 
