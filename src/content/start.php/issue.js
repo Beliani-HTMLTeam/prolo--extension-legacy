@@ -72,6 +72,7 @@ class Issues {
   board_id = "13";
   users = {
     // https://www.prologistics.info/api/issueLog/getIssueTypes/?
+    KrBiranowski: "2150",
     KaKazaniecki: "1193",
     DmyKrapyvianskyi: "1910",
     JaGajowiecki: "1989",

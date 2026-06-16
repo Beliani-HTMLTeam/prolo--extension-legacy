@@ -35,6 +35,7 @@ window.ui = {
 
     const user = {
       RKobus: "Rafał Kobus",
+      KrBiranowski: "Krzysztof Biranowski",
       KaKazaniecki: "Kamil Kazaniecki",
       DmyKrapyvianskyi: "Dmytro Krapyvianskyi",
       JaGajowiecki: "Jakub Gajowiecki",
