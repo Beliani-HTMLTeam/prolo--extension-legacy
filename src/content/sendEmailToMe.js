@@ -99,7 +99,10 @@ function fetchAvailableIds() {
             "Shop#7253514: Dmytro Krapyvianskyi dmytro.krapyvianskyi@beliani.com",
 
           JaGajowiecki:
-            "Shop#7875098: Jakub Gajowiecki jakub.gajowiecki@beliani.net"
+            "Shop#7875098: Jakub Gajowiecki jakub.gajowiecki@beliani.net",
+
+          KrBiranowski:
+            "Shop#8256838: Krzysztof Biranowski krzysztof.biranowski@beliani.net"
         },
 
         "Graphics": {
