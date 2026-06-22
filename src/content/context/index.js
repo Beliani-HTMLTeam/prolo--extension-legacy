@@ -101,7 +101,7 @@ const app_context = {
         button.addEventListener("click", () => {
           const sidebar = document.createElement("div");
           sidebar.style =
-            "position: fixed; height: 100vh; right: 0; top: 0; width: 360px; background: white; padding: 0.4rem; display: flex; flex-direction: column; gap: .6rem;";
+            "z-index: 999999999999; position: fixed; height: 100vh; right: 0; top: 0; left: 0; background: white; padding: 0.4rem; display: flex; flex-direction: column; gap: .6rem;";
 
           const sidebar_header = document.createElement("div");
           sidebar_header.style =
@@ -127,7 +127,7 @@ const app_context = {
 
           const sidebar_body = document.createElement("div");
           sidebar_body.style =
-            "display: flex; flex-direction: column; gap: 6px;";
+            "display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;";
 
           const removeContextButton = document.createElement("button");
           removeContextButton.innerHTML =
