@@ -91,6 +91,10 @@ function fetchAvailableIds() {
           RKobus: "Shop#4280939: Rafał Kobus rafal.kobus@beliani.net",
         },
 
+        "Test Mobile": {
+          "TestPhone": "Shop#2476929: Calendar Beliani calendar@beliani.co.uk",
+        },
+
         HTML: {
           KKazaniecki:
             "Shop#6239524: Kamil Kazaniecki kamil.kazaniecki@beliani.net",
