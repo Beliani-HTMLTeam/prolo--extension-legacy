@@ -124,6 +124,29 @@ startClick.addEventListener("click", async (ev) => {
   }
 });
 
+preventAlertBtn.addEventListener("click", (ev) => {
+  let btns = document.querySelectorAll('input[type="button"][value="START"]')
+  try {
+    for (let btn of btns) {
+      let code = btn.getAttribute('onclick')
+      code = code.replace(/if\s*\([^\_]*\)\s*/g, '');
+      btn.setAttribute('onclick', code);
+      let copyBtn = btn.cloneNode(true);
+      let parent = btn.parentNode;
+      btn.remove();
+      parent.insertBefore(copyBtn, parent.firstChild);
+    }
+  } catch {
+    preventAlertBtn.innerText = "Prevent alert ✘";
+  } finally {
+    preventAlertBtn.innerText = "Prevent alert ✔";
+  }
+  
+  setTimeout(() => {
+    preventAlertBtn.innerText = "Prevent alert";
+  }, 1000);
+});
+
 colorTargetRow.addEventListener("click", (ev) => {
   const loader = new Loader(ev.currentTarget, 1000);
   const currentColorTarget = sortedTableToCurrent((apply = false), null, null, loader);

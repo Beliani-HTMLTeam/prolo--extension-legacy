@@ -102,6 +102,12 @@
   border: 1px solid #d9534f;
 }
 
+.btn.preventAlertBtn {
+  background: #ff9800;
+  border: 1px solid #ff9800;
+  min-width: 200px;
+}
+
 
 .open-button:hover, .openPlaningBtn:hover, .setDateBtn:hover:enabled, .btn:hover:enabled {
   background: #fff;
@@ -118,6 +124,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
   margin-top: 15px;
   position:relative;
 }

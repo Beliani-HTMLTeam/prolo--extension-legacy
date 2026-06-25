@@ -30,6 +30,8 @@ const colorTargetRow = createDomElement("button", "btn colorRowBtn", "Set color 
 
 const showCurrentStop = createDomElement("button", "btn currentStopBtn", "Show current stop", btnContainer);
 
+const preventAlertBtn = createDomElement("button", "btn preventAlertBtn", "Prevent alert", btnContainer);
+
 const currentNumberText = createDomElement("p", "currentNumberText", null, mainContainer);
 const stopLengthText = createDomElement("p", "stopLengthText", null, mainContainer);
 
