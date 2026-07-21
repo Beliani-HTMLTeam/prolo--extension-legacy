@@ -47,6 +47,8 @@ const app = {
     "html[slovak]": "sk",
     "html[spanish]": "es",
     "html[swedish]": "se",
+    "html[croatian]": "hr",
+    "html[slovene]": "si",
 
     //! Paste name textarea for HR and SI for desktop
   },
@@ -68,6 +70,8 @@ const app = {
     "mobile_html[slovak]": "sk",
     "mobile_html[spanish]": "es",
     "mobile_html[swedish]": "se",
+    "mobile_html[croatian]": "hr",
+    "mobile_html[slovene]": "si",
 
         //! Paste name textarea for HR and SI for mobile
   },
@@ -91,6 +95,8 @@ const app = {
     "banner_text[slovak]": "sk",
     "banner_text[spanish]": "es",
     "banner_text[swedish]": "se",
+    "banner_text[croatian]": "hr",
+    "banner_text[slovene]": "si",
 
         //! Paste name textarea for HR and SI for BANNER_TEXT
   },
