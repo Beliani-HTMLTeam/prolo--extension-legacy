@@ -1,5 +1,6 @@
 async function fetchProducts(ids) {
   // getProductName - return product name
+  // getShopDescription - return shop description
   // getShopAliases - returns aliases for every shop
   // getSlavesForMasterId - return slaves for master id
   // getPrice - return price for passed id
@@ -7,6 +8,8 @@ async function fetchProducts(ids) {
   const apiRoutes = {
     getProductName: (master_id) =>
       `https://www.prologistics.info/api/condensedSA/get/?id=${master_id}&block=article_name`,
+    getShopDescription: (master_id) =>
+      `https://www.prologistics.info/api/condensedSA/get/?id=${master_id}&block=ShopDesription`,
     getSlavesForMasterId: (master_id) =>
       `https://www.prologistics.info/api/condensedList/getList?saved_id=${master_id}`,
     getPrice: (slave_id) =>
@@ -17,7 +20,7 @@ async function fetchProducts(ids) {
       `https://www.prologistics.info/api/condensedSA/getSlave/?id=${slave_id}&block=buttons`,
   };
 
-  let { getProductName, getSlavesForMasterId, getPrice, getShopAliases, getPriceAndIsActive } = apiRoutes;
+  let { getProductName, getSlavesForMasterId, getPrice, getShopDescription, getShopAliases, getPriceAndIsActive } = apiRoutes;
 
   async function parse_response(responses, cbs) {
     const responses_json = [];
@@ -91,6 +94,11 @@ async function fetchProducts(ids) {
     );
     const [name, slaves_ids] = parsed_response_slaves;
 
+    const shop_description = await parse_response(
+      await Promise.allSettled([fetch(getShopDescription(product.main_id))]),
+      (response) => response.sa,
+    );
+
     // ENTER models slave.js
     const slaves_prices = await parse_response_prices(
       await Promise.allSettled(
@@ -105,6 +113,7 @@ async function fetchProducts(ids) {
       return {
         ...item,
         article_name: name,
+        shop_description: shop_description[0],
       };
     });
   }
