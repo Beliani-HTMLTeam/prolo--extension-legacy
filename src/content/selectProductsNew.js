@@ -21,6 +21,26 @@ class ProductListFilter {
     }
     return processedAlias; 
   }
+  processShopDescription(item) {
+    const processedDescription = {};
+    if (item && item.shop_description) {
+      for (const langKey in item.shop_description.ShopDesription) {
+        const saDescriptionData = item.shop_description.ShopDesription[langKey];
+        const descriptionData = item.shop_description.titles[langKey];
+        if (saDescriptionData && descriptionData) {
+          let title = "";
+          if (descriptionData[saDescriptionData.value])
+            title = descriptionData[saDescriptionData.value];
+          processedDescription[langKey] = {
+            language: saDescriptionData.language,
+            id: saDescriptionData.id,
+            title: title
+          }
+        }
+      }
+    }
+    return processedDescription;
+  }
   processAllProducts() {
     return this.products.map((item) => {
       const savedParams = item.saved_params || {};
@@ -42,6 +62,7 @@ class ProductListFilter {
       };
       if (data.username === "Beliani") {
         processedProduct.ShopSAAlias = this.processShopSAAlias(item);
+        processedProduct.shop_description = this.processShopDescription(item);
       }
       return processedProduct;
     });
