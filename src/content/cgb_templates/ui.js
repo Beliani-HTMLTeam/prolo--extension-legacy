@@ -117,7 +117,7 @@ window.ui = {
       this.buttonsBlock.classList.remove("active");
 
       setTimeout(() => {
-        document.querySelector(".openButton").style.display = "block";
+        document.querySelector(".openButtonLegacy").style.display = "block";
       }, 400);
     });
   },

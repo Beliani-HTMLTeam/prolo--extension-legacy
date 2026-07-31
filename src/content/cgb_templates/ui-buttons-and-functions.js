@@ -244,8 +244,8 @@ function hideImage() {
   }
 
   const showImageBtn = document.createElement("button");
-  showImageBtn.className = "showImageBtn";
-  showImageBtn.textContent = "Hide image";
+  showImageBtn.className = "showImageBtnLegacy";
+  showImageBtn.textContent = "Hide image Legacy";
 
   document.body.append(showImageBtn);
 
@@ -264,7 +264,7 @@ function hideImage() {
             el.classList.add("animatedImage");
           });
         } else {
-          showImageBtn.textContent = "Show image";
+          showImageBtn.textContent = "Show image Legacy";
 
           el.classList.remove("animatedImage");
           el.classList.add("hiddenImage");
@@ -278,14 +278,14 @@ function hideImage() {
       });
     });
 
-    showImageBtn.textContent = btnTextHidden ? "Show image" : "Hide image";
+    showImageBtn.textContent = btnTextHidden ? "Show image Legacy" : "Hide image Legacy";
   });
 }
 
 //Open button CGB
 function createOpenButton() {
   const openButton = document.createElement("button");
-  openButton.className = "openButton";
+  openButton.className = "openButtonLegacy";
   openButton.textContent = "Open Button CGB";
 
   document.body.append(openButton);

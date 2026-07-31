@@ -41,9 +41,9 @@ button {
     position: relative;
 }
 
-.openButton {
+.openButtonLegacy {
     position: fixed;
-    top: 20px;
+    top: 100px;
     right: 20px;
     padding: var(--padding-on-btn);
     border-radius: var(--border-radius);
@@ -53,7 +53,7 @@ button {
     cursor: pointer;
 }
 
-.openButton:hover {
+.openButtonLegacy:hover {
     background: var(--color-white);
     color: var(--color-black);
     transition: var(--transition);
@@ -242,9 +242,9 @@ button {
 
 /* Styles for Show/hide image CGB */
 
-.showImageBtn {
+.showImageBtnLegacy {
   position: fixed;
-  top: 21px;
+  top: 100px;
   right:  170px;
   cursor: pointer;
   border: 2px solid var(--bordo-color);
@@ -254,7 +254,7 @@ button {
   padding: var(--padding-on-btn);
 }
 
-.showImageBtn:hover {
+.showImageBtnLegacy:hover {
   background: var(--color-white);
   color: var(--color-black);
   transition: var(--transition);
