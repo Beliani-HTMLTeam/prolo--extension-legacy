@@ -118,12 +118,12 @@ const TEMPLATES = [
         padding-bottom: min(24px, 4vw);
       }
       </style>
-      <a target="_blank" style="text-decoration: none;" href="[[banner_category_url]]">
+      <a target="_blank" style="text-decoration: none; flex: 1;" href="[[banner_category_url]]">
         <div id="cgb" class="xyGContainer" style="background-color:[[banner_background_mobile]];">
           <div class="textBannerContainer">
             [[banner_text]]
           </div>
-          <video style="max-width: 100%; vertical-align: middle;" autoplay="" loop="" muted="" playsinline="" disableremoteplayback="true" >
+          <video style="max-width: 100%; vertical-align: middle; width: 100%;" autoplay="" loop="" muted="" playsinline="" disableremoteplayback="true" >
             <source src="{imageurl src="mobilebanner" picid=$banner->id ext=$banner->ext}" type="video/mp4">
           </video>
         </div>
@@ -191,13 +191,13 @@ const TEMPLATES = [
     </style> 
 
 
-      <a href="[[banner_category_url]]" target="_blank" class="xyCTA" style="display: block; text-decoration: none; color: [[banner_text_color]];"> 
+      <a href="[[banner_category_url]]" target="_blank" class="xyCTA" style="display: block; text-decoration: none; color: [[banner_text_color]]; flex: 1;"> 
       <div id="cgb" class="xyzGridContainer" style="background-color:[[banner_background_mobile]];"> 
       <div style="padding: 10px 5px 10px 0px;"> 
       [[banner_text]]
       </div> 
       <div style="width:100%"> 
-      <video playsinline autoplay loop muted disableremoteplayback="true" style="max-width: 100%; vertical-align: middle;"> 
+      <video playsinline autoplay loop muted disableremoteplayback="true" style="max-width: 100%; vertical-align: middle; width: 100%;"> 
       <source src="{imageurl src='mobilebanner' picid=$banner->id ext=$banner->ext}" type="video/mp4"> 
       </video> 
       </div> 
@@ -237,7 +237,7 @@ const TEMPLATES = [
         padding-bottom: min(23px, 2vw);
       }
       </style>
-        <a href="[[banner_category_url]]" target="_blank" style="display: block; text-decoration: none; color: [[banner_text_color]];">
+        <a href="[[banner_category_url]]" target="_blank" style="display: block; text-decoration: none; color: [[banner_text_color]]; flex: 1;">
         <div id="cgb" class="xyGContainer" style="display: flex; flex-direction: column; background-color:[[banner_background_desktop]];">
           <div class="textBannerContainer">
           [[banner_text]]
@@ -273,12 +273,12 @@ const TEMPLATES = [
         padding-bottom: min(24px, 4vw);
       }
       </style>
-      <a href="[[banner_category_url]]" target="_blank" style="display: block; text-decoration: none; color: [[banner_text_color]];">
+      <a href="[[banner_category_url]]" target="_blank" style="display: block; text-decoration: none; color: [[banner_text_color]]; flex: 1;">
         <div id="cgb" class="xyGContainer" style="background-color:[[banner_background_mobile]];">
           <div class="textBannerContainer">
            [[banner_text]]
           </div>
-          <img style="max-width: 100%; vertical-align: middle;" src="{imageurl src="mobilebanner" picid=$banner->id ext=$banner->ext}" />
+          <img style="max-width: 100%; vertical-align: middle; width: 100%;" src="{imageurl src="mobilebanner" picid=$banner->id ext=$banner->ext}" />
         </div>
       </a>`,
       banner_text: `<p class="textBanner" style="margin: 0;">{{Offer_text}}</p>`,
@@ -344,7 +344,7 @@ const TEMPLATES = [
         </style> 
 
 
-        <a href="[[banner_category_url]]" target="_blank" class="xyCTA" style="display: block; text-decoration: none; color: [[banner_text_color]];"> 
+        <a href="[[banner_category_url]]" target="_blank" class="xyCTA" style="display: block; text-decoration: none; color: [[banner_text_color]]; flex: 1;"> 
           <div id="cgb" class="xyzGridContainer" style="background-color:[[banner_background_mobile]];"> 
             <div style="padding: 10px 5px 10px 0px;"> 
               [[banner_text]]
