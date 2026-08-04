@@ -142,7 +142,7 @@
 const subjectLines = [];
 
 async function getSubjectLineDatabase() {
-  const url = `https://docs.google.com/spreadsheets/d/1djnjfhsFX4-Fghv5cQU_UNYaEhVL9Ban4VUqIfHsWdc/gviz/tq?tqx=out:json&gid=210530218`;
+  const url = `https://docs.google.com/spreadsheets/d/1RcsQspit0B3b3xX1NwZ9RWnUzZrkoVDULu2cnPMZ04U/gviz/tq?tqx=out:json&gid=1224674314`;
 
   try {
     const response = await fetch(url);
@@ -156,17 +156,28 @@ async function getSubjectLineDatabase() {
 }
 async function loadSubjectLines() {
   const data = await getSubjectLineDatabase();
-  const flatArray = data.flat();
 
-  for (let i = 0; i < flatArray.length; i++) {
-    const subject = flatArray[i];
-    if (
-      typeof subject === "string" &&
-      subject.trim() !== "" &&
-      subject.trim() !== "Newsletter" &&
-      !subject.trim().startsWith("Subject Line")
-    ) {
-      subjectLines.push({ subject: subject.trim() });
+  if (!data.length) return;
+
+  let newData = {};
+
+  // clean data from empty cell, text length and template
+  for (let i = 0; i < data.length; i++) {
+    newData[i] = [];
+    for (let j = 0; j < data[i].length; j++) {
+      if (j < 4) continue;
+      if (isNaN(data[i][j]) || data[i][j].length > 0) {
+        newData[i].push(data[i][j]);
+      }
+    }
+  }
+
+  for (let row = 1; row < Object.keys(newData).length; row++) {
+    for (const value of newData[row]) {
+      const subject = String(value ?? "").trim();
+
+      if (subject)
+        subjectLines.push({ subject });
     }
   }
 }
