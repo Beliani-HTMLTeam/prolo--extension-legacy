@@ -66,8 +66,7 @@
 
         "./content/select_templates/index.js",
         "./content/select_context/index.js",
-        "./content/fulfill_LP/index.js",
-        "./content/fix_cp_update/preupdaterFix.js"
+        "./content/fulfill_LP/index.js"
       ]
     },
     {
