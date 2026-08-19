@@ -22,6 +22,8 @@ const app_fulfill = {
     28: "no",
     29: "sk",
     30: "ro",
+    33: "hr",
+    34: "si",
   },
   languageToSlug: {
     polish: "pl",
@@ -41,6 +43,8 @@ const app_fulfill = {
     norsk: "no",
     dutch: "nl",
     romanian: "ro",
+    croatian: "hr",
+    slovene: "si",
   },
   slugsToOrigin: {
     chde: "https://www.beliani.ch",
@@ -65,6 +69,8 @@ const app_fulfill = {
     befr: "https://www.beliani.be",
     benl: "https://www.beliani.be",
     roro: "https://www.beliani.ro",
+    hrhr: "https://www.beliani.hr",
+    sisi: "https://www.beliani.si",
   },
   sellerToSlug: {
     Beliani: "ch",
@@ -86,6 +92,8 @@ const app_fulfill = {
     "Beliani SK": "sk",
     "Beliani BE": "be",
     "Beliani RO": "ro",
+    "Beliani HR": "hr",
+    "Beliani SI": "si",
   },
 
   init() {
@@ -105,6 +113,7 @@ const app_fulfill = {
     }
 
     if (!(this.seller in this.shopIdToSlug)) {
+      console.log(location.href, "aaaa");
       new Notification("Shop id not found in shopIdToSlug");
       console.log(
         `${this.seller} not found in ${JSON.stringify(this.shopIdToSlug)}`,

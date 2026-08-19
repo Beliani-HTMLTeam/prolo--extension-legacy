@@ -24,19 +24,26 @@ class ProductListFilter {
   processShopDescription(item) {
     const processedDescription = {};
     if (item && item.shop_description) {
-      for (const langKey in item.shop_description.ShopDesription) {
-        const saDescriptionData = item.shop_description.ShopDesription[langKey];
-        const descriptionData = item.shop_description.titles[langKey];
-        if (saDescriptionData && descriptionData) {
-          let title = "";
-          if (descriptionData[saDescriptionData.value])
-            title = descriptionData[saDescriptionData.value];
-          processedDescription[langKey] = {
-            language: saDescriptionData.language,
-            id: saDescriptionData.id,
-            title: title
-          }
-        }
+      // for (const langKey in item.shop_description.ShopDesription) {
+      //   const saDescriptionData = item.shop_description.ShopDesription[langKey];
+      //   const descriptionData = item.shop_description.titles[langKey];
+      //   if (saDescriptionData && descriptionData) {
+      //     let title = "";
+      //     if (descriptionData[saDescriptionData.value])
+      //       title = descriptionData[saDescriptionData.value];
+      //     processedDescription[langKey] = {
+      //       language: saDescriptionData.language,
+      //       id: saDescriptionData.id,
+      //       title: title
+      //     }
+      //   }
+      // }
+      for (const langKey in item.shop_description.automatic_titles) {
+        processedDescription[langKey] = {
+          language: langKey,
+          id: item.ShopSAAlias?.[langKey]?.id ?? null,
+          title: item.shop_description.automatic_titles[langKey],
+        };
       }
     }
     return processedDescription;
