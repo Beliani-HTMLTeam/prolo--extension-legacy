@@ -103,13 +103,7 @@
         "./content/fulfill_NS/index.js",
         "./content/helpers/CSVfns.js",
         "./content/fulFillServer.js",
-        "./content/sendEmailToMe.js",
         "./content/svg.js",
-        "./content/newsletter_family/copyCampaignNumber.js",
-
-        "./content/newsletter_family/handleButtonBodyUpdate.js",
-
-        "./content/newsletter_family/features/updateBody.js",
         "./content/newsletter_family/features/fulfillBody.js",
         "./content/newsletter_family/NewsletterFamilyTable.js"
       ],
