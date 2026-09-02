@@ -156,28 +156,17 @@ async function getSubjectLineDatabase() {
 }
 async function loadSubjectLines() {
   const data = await getSubjectLineDatabase();
+  const flatArray = data.flat();
 
-  if (!data.length) return;
-
-  let newData = {};
-
-  // clean data from empty cell, text length and template
-  for (let i = 0; i < data.length; i++) {
-    newData[i] = [];
-    for (let j = 0; j < data[i].length; j++) {
-      if (j < 4) continue;
-      if (isNaN(data[i][j]) || data[i][j].length > 0) {
-        newData[i].push(data[i][j]);
-      }
-    }
-  }
-
-  for (let row = 1; row < Object.keys(newData).length; row++) {
-    for (const value of newData[row]) {
-      const subject = String(value ?? "").trim();
-
-      if (subject)
-        subjectLines.push({ subject });
+  for (let i = 0; i < flatArray.length; i++) {
+    const subject = flatArray[i];
+    if (
+      typeof subject === "string" &&
+      subject.trim() !== "" &&
+      subject.trim() !== "Newsletter" &&
+      !subject.trim().startsWith("Subject Line")
+    ) {
+      subjectLines.push({ subject: subject.trim() });
     }
   }
 }
