@@ -62,10 +62,6 @@
       "https://www.googleapis.com/auth/spreadsheets"
     ]
   },
-  "action": {
-    "default_title": "Click to view a popup",
-    "default_popup": "./build/index.html"
-  },
   "externally_connectable": {
     "matches": ["http://localhost:5173/"]
   },

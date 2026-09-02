@@ -22,12 +22,6 @@
       "js": ["./dev_constants.js"]
     },
     {
-      "matches": ["<all_urls>"],
-      "js": ["./content/beliani/showPurgeDate.js"],
-      "css": ["./content/beliani/style.css"],
-      "run_at": "document_idle"
-    },
-    {
       "matches": ["https://www.prologistics.info/newsletter_preview.html?id=*"],
       "js": ["./content/mustache/index.js", "./content/pages/my_page.js"]
     },
@@ -46,7 +40,6 @@
         "https://prolodev.prologistics.info/purge.php"
       ],
       "js": [
-        "./content/purge/index.js",
         "./content/newsletter_family/new_features/log.js"
       ],
       "run_at": "document_idle"
@@ -155,18 +148,6 @@
       "css": [
         "./content/cgb_templates/style.css",
         "./libraries/sweetalert2.min.css"
-      ]
-    },
-    {
-      "matches": [
-        "https://www.prologistics.info/saved_details.php?filter_id=*"
-      ],
-      "js": [
-        "./content/isActive.js",
-        "./content/fetchProducts.js",
-        "./content/download.js",
-        "./content/selectProductsNew.js",
-        "./content/selectProduct.js"
       ]
     },
     {
@@ -280,10 +261,6 @@
   "background": {
     "service_worker": "./background/sw.js",
     "type": "module"
-  },
-  "action": {
-    "default_title": "Click to view a popup",
-    "default_popup": "./build/index.html"
   },
   "externally_connectable": {
     "matches": ["http://localhost:5173/"]
