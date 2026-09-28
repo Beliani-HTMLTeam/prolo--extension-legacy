@@ -243,10 +243,7 @@ const app = {
         let checkNodename = "";
 
         //Find banners desktop
-        let checkDesktop = document.querySelectorAll('tr[id^="trcheckrow"] video[name="media"]');
-        if (checkDesktop.length === 0) {
-          checkDesktop = document.querySelectorAll('tr[id^="trcheckrow"] img');
-        }
+        let checkDesktop = getMediaDesktop();
         if (!checkDesktop.length) return loader.hideLoader();
 
         //Find banners mobile

@@ -237,11 +237,7 @@ function createContextBtn() {
 
 // Function for Hide show Image CGB
 function hideImage() {
-  let findImage = document.querySelectorAll('tr[id^="trcheckrow"] video[name="media"]');
-
-  if (findImage.length === 0) {
-    findImage = document.querySelectorAll('tr[id^="trcheckrow"] img');
-  }
+  let findImage = getMediaDesktop();
 
   const showImageBtn = document.createElement("button");
   showImageBtn.className = "showImageBtnLegacy";
@@ -375,6 +371,19 @@ function getMediaMobile(trElement, selector = "video[name='media']") {
   // If mp4 not found find img
   if (media.length === 0) {
     media = [...trElement.querySelectorAll("img"), ...(nextTr?.tagName === "TR" ? nextTr.querySelectorAll("img") : [])];
+  }
+
+  return media;
+}
+
+// Find and return all desktop banners for video[name="media"] with fallback <img>
+// Located in file input - "pic[" prefix excludes main_pic and mobile_pic[lang]
+function getMediaDesktop(selector = "video[name='media']") {
+  const picInputs = document.querySelectorAll('input[type="file"][name^="pic["]');
+  let media = [...picInputs].map((input) => input.closest("td")?.querySelector(selector)).filter(Boolean);
+
+  if (media.length === 0) {
+    media = [...picInputs].map((input) => input.closest("td")?.querySelector("img")).filter(Boolean);
   }
 
   return media;
