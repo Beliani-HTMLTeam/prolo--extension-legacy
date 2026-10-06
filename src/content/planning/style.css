@@ -1,0 +1,412 @@
+
+/* Style Planing tool */
+
+.openPlaningBtn {
+  position: fixed;
+  top: 20px;
+  right: 175px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: #fd9000;
+  color: #fff;
+  border: 2px solid #fd9000;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.planing-mainBlock {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: block;
+  width: 450px;
+  height: 250px;
+  box-shadow: 1px 1px 10px #000;
+  background: linear-gradient(to bottom left, #d2d2d2, #d2d2d2 50%, #f0cab4);;
+  border-radius: 10px;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-500px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+}
+
+.planing-mainBlock.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.open-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: #328a35;
+  color: #fff;
+  border: 2px solid #328a35;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 8px;
+  right: 7px;
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+  background: #c91f19;
+  color: #fff;
+  border: 1px solid #c91f19;
+  cursor: pointer;
+  transition: background 0.3s color 0.3s;
+}
+
+.closeBtn:hover {
+  background: #fff;
+  color: #000;
+}
+
+
+
+.btn.setDateBtn {
+  background: #7811f7;
+  border: 1px solid #7811f7;
+}
+
+.btn{
+  min-width: 130px;
+  padding: 10px 15px;
+  color: #fff;
+  cursor: pointer;
+  background: #328a35;
+  border: 1px solid #328a35;
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+  border-radius: 5px;
+}
+
+.btn.colorRowBtn {
+  background: #750000;
+  border: 1px solid #750000;
+  min-width: 200px;
+}
+
+.btn.currentStopBtn {
+  min-width: 200px;
+}
+
+.btn.startClickBtn {
+  background: #d9534f;
+  border: 1px solid #d9534f;
+}
+
+.btn.preventAlertBtn {
+  background: #ff9800;
+  border: 1px solid #ff9800;
+  min-width: 200px;
+}
+
+
+.open-button:hover, .openPlaningBtn:hover, .setDateBtn:hover:enabled, .btn:hover:enabled {
+  background: #fff;
+  color: #000;
+  box-shadow: 1px 1px 10px #000;
+}
+
+.planing-container {
+  height: 100%;
+  padding: 0 15px;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 15px;
+  position:relative;
+}
+
+.alert-span {
+  display: none;
+  opacity: 0;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #c91f19;
+  font-weight: bold;
+  transition: opacity .3s ease;
+}
+
+.planing-text {
+  margin: 15px 0 15px 15px;
+  overflow: hidden;
+}
+
+.alert-span.show {
+  display: block;
+  opacity: 1;
+  animation: shake 0.6s ease;
+}
+
+.stopLengthText, .currentNumberText {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@keyframes shake {
+ 0% { transform: translateX(0) }
+ 25% { transform: translateX(5px) }
+ 50% { transform: translateX(-5px) }
+ 75% { transform: translateX(5px) }
+ 100% { transform: translateX(0) }
+}
+
+.spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin .3s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes fadeIn {
+     to {
+        opacity: 1;
+     }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input {
+  border: none;
+  width: 120px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.input.input-forTime {
+  display: none;
+}
+
+.checkbox-wrapper-46 input[type="checkbox"] {
+  display: none;
+  visibility: hidden;
+}
+
+.checkbox-wrapper-46 .cbx {
+  margin: auto;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+.checkbox-wrapper-46 .cbx span {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translate3d(0, 0, 0);
+}
+.checkbox-wrapper-46 .cbx span:first-child {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  transform: scale(1);
+  vertical-align: middle;
+  border: 1px solid #9098A9;
+  transition: all 0.2s ease;
+}
+.checkbox-wrapper-46 .cbx span:first-child svg {
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 16px;
+  stroke-dashoffset: 16px;
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+  transform: translate3d(0, 0, 0);
+}
+.checkbox-wrapper-46 .cbx span:first-child:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #328a35;
+  display: block;
+  transform: scale(0);
+  opacity: 1;
+  border-radius: 50%;
+}
+.checkbox-wrapper-46 .cbx span:last-child {
+  padding-left: 8px;
+}
+.checkbox-wrapper-46 .cbx:hover span:first-child {
+  border-color: #328a35;
+}
+
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child {
+  background: #328a35;
+  border-color: #328a35;
+  animation: wave-46 0.4s ease;
+}
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child svg {
+  stroke-dashoffset: 0;
+}
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child:before {
+  transform: scale(3.5);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.sundayCheck {
+  position: absolute;
+  top: 65px;
+  right: 15px;
+}
+
+.stopLengthText, .currentNumberText {
+  margin-bottom: 15px;
+}
+
+.showNumberText {
+  position: relative;
+}
+
+
+
+@keyframes wave-46 {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+/* Style for Remove tool */
+
+.container-button {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+}
+
+.test-button {
+  flex: 1;
+  margin-right: 5px;
+  padding: 6px 12px;
+  background-color: #43df48;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.execute-button {
+  flex: 1;
+  padding: 6px 12px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.log-button {
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.logarea {
+  display: none;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+/* Styl panelu */
+#spam-removal-tool {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  width: 320px;
+  padding: 14px 10px 10px 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+  font-size: 15px;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+#spam-removal-tool.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+tr.active td {
+  background: #dad4d4 !important;
+  transition: background .1s linear;
+}
+
+.bracketsRow, .sundayRow {
+  font-size: 13px;
+  background: #ffe599 !important;
+  transition: background .5s ease, font-size .5s ease;
+}
+
+.sundayRow {
+  background: #328a35 !important;
+  color: #fff8dc;
+}
+
+tr.clicked-color td{
+  background: #ffe599 !important;
+  transition: background .5s ease;
+
+}
+
+
+
