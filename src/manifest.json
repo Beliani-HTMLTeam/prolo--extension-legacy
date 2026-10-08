@@ -87,6 +87,32 @@
         "./content/planning/planningDate.js"
       ],
       "css": ["./libraries/sweetalert2.min.css", "./content/planning/style.css"]
+    },
+    {
+      "matches": [
+        "https://www.prologistics.info/shop_banner.php?id=*",
+        "https://prolodev.prologistics.info/shop_banner.php?id*"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "./content/mustache/index.js",
+        "./content/papaParse/papaparse.min.js",
+        "./libraries/dexie.js",
+        "./libraries/sweetalert2.min.js",
+
+        "./content/handlers/handleSelectBannerTemplate.js",
+        "./content/templates/banners.js",
+
+        "./content/cgb_templates/ui.js",
+        "./content/cgb_templates/loader.js",
+        "./content/cgb_templates/ui-buttons-and-functions.js",
+        "./content/cgb_templates/index.js",
+        "./content/banner_fulfill/fulfill_img.js"
+      ],
+      "css": [
+        "./content/cgb_templates/style.css",
+        "./libraries/sweetalert2.min.css"
+      ]
     }
   ],
   "declarative_net_request": {
