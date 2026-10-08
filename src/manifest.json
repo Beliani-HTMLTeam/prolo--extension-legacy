@@ -48,8 +48,7 @@
         "./content/linkifyjs/linkify-html.min.js",
         "./content/issue/nltrChecklistMap.bundle.js",
         "./content/start.php/issue.js"
-      ],
-      "css": ["./content/start.php/start_php.css"]
+      ]
     },
     {
       "matches": [
