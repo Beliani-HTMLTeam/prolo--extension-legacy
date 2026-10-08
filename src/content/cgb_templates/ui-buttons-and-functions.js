@@ -169,6 +169,7 @@ function createContextBtn() {
           }
         },
         header: true,
+        transformHeader: (h) => h.trim(),
       });
     }
   });

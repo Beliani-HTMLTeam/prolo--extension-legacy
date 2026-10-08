@@ -190,19 +190,21 @@ function convertToObject(CSV) {
       new Notification("slug required");
       return;
     }
+    const slug = String(element["slug"]).trim();
     for (const key of Object.keys(element)) {
-      if (element["slug"] in object_data) {
-        if (typeof object_data[element["slug"]] === "object") {
-          object_data[element["slug"]] = {
-            ...object_data[element["slug"]],
-            [key]: element[key],
+      const value = key === "slug" ? slug : element[key];
+      if (slug in object_data) {
+        if (typeof object_data[slug] === "object") {
+          object_data[slug] = {
+            ...object_data[slug],
+            [key]: value,
           };
         } else {
-          object_data[element["slug"]] = element[key];
+          object_data[slug] = value;
         }
       } else {
-        object_data[element["slug"]] = {
-          [key]: element[key],
+        object_data[slug] = {
+          [key]: value,
         };
       }
     }
